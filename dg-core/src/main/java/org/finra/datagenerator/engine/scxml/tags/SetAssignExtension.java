@@ -24,6 +24,7 @@ import org.apache.commons.scxml.SCXMLExpressionException;
 import org.apache.commons.scxml.model.Action;
 import org.apache.commons.scxml.model.ModelException;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -34,7 +35,7 @@ import java.util.Map;
  * Marshall Peters
  * Date: 11/7/14
  */
-public class SetAssignExtension implements CustomTagExtension<SetAssignExtension.SetAssignTag> {
+public class SetAssignExtension extends AbstractSetAssignExtension implements CustomTagExtension<SetAssignExtension.SetAssignTag> {
 
     public Class<SetAssignTag> getTagActionClass() {
         return SetAssignTag.class;
@@ -64,16 +65,17 @@ public class SetAssignExtension implements CustomTagExtension<SetAssignExtension
         String[] domain = set.split(",");
 
         //take the product
-        List<Map<String, String>> productTemp = new LinkedList<>();
-        for (Map<String, String> p : possibleStateList) {
-            for (String value : domain) {
-                HashMap<String, String> n = new HashMap<>(p);
-                n.put(variable, value);
-                productTemp.add(n);
-            }
-        }
-
-        return productTemp;
+//        List<Map<String, String>> productTemp = new LinkedList<>();
+//        for (Map<String, String> p : possibleStateList) {
+//            for (String value : domain) {
+//                HashMap<String, String> n = new HashMap<>(p);
+//                n.put(variable, value);
+//                productTemp.add(n);
+//            }
+//        }
+//
+//        return productTemp;
+        return performCartesianProduct(variable, possibleStateList, Arrays.asList(domain));
     }
 
     /**

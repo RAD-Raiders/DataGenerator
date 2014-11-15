@@ -64,6 +64,13 @@
             <version>9.2.1.v20140609</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- For CsvSetAssignExtension -->
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>3.1</version>
+        </dependency>
     </dependencies>
 
 </project>
